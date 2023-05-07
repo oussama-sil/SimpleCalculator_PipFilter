@@ -31,17 +31,20 @@ public class MainApp{
         Pipe pipe3 = new PipeQueue();
         
 
-        Filter prod = new TestFilter(null,pipe1,0);
-        prod.start();
+        //Filter prod = new TestFilter(null,pipe1,0);
+        //prod.start();
 
         Filter interpreter = new Interpreter(pipe1, pipe2);
         interpreter.start();
 
         Filter trace = new Trace(pipe2, pipe3, "logs.txt");
         trace.start();
-
-        Filter cons1 = new TestFilter(pipe3,null,1);
-        cons1.start();
+         
+        Filter gui= new GUI(pipe3,pipe1);
+        gui.start();
+        
+        //Filter cons1 = new TestFilter(pipe3,null,1);
+        //cons1.start();
 
 
     }

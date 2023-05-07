@@ -15,7 +15,7 @@ public class Interpreter extends Filter{
             String out = "";
             //* Reading from the pip the expression to compute 
             String expression = this.getData();
-            if(expression != ""){
+            if(expression.length()>0){
                 try{
                     //* Conversion to postFix format
                     Converter converter = new SimpleConverter(expression);
