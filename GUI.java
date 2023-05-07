@@ -10,8 +10,13 @@ public class GUI extends Filter {
     public void run(){
 
         JFrame fram1=new JFrame();
-        fram1.setVisible(true);
         fram1.setSize(400, 300);
+        Dimension screenDimension = Toolkit.getDefaultToolkit().getScreenSize(); 
+        fram1.setLocation(
+            (screenDimension.width-400)/2,
+            (screenDimension.height-300)/2
+        );
+        fram1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         fram1.setLayout(new BorderLayout(10,10));
         fram1.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e){
@@ -89,7 +94,7 @@ public class GUI extends Filter {
                 LogsField.setText(getData().replace(';', '\n'));
             }
         });
-
+        
         sumButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 if(NBOField.getText().length()>0 && NBOField.getText().length()>0){
@@ -102,7 +107,7 @@ public class GUI extends Filter {
                 }
             }
         });
-
+        
         prodButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 if(NBOField.getText().length()>0 && NBOField.getText().length()>0){
@@ -128,10 +133,11 @@ public class GUI extends Filter {
                 }
             }
         });
-
+        
         fram1.add(topFrPanel,BorderLayout.NORTH);
         fram1.add(MidFrPanel,BorderLayout.CENTER);
-
+        
+        fram1.setVisible(true);
         //? What to send on the pipe_out (using sendData())
         //* To Compute an operation:
         //*     If (+ or - or *)  str= "op1 + op2"
