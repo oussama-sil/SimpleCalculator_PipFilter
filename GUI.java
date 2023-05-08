@@ -1,4 +1,6 @@
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+
 import java.awt.*;
 import java.awt.event.*;
 public class GUI extends Filter {
@@ -10,11 +12,11 @@ public class GUI extends Filter {
     public void run(){
 
         JFrame fram1=new JFrame();
-        fram1.setSize(400, 300);
+        fram1.setSize(400, 320);
         Dimension screenDimension = Toolkit.getDefaultToolkit().getScreenSize(); 
         fram1.setLocation(
             (screenDimension.width-400)/2,
-            (screenDimension.height-300)/2
+            (screenDimension.height-320)/2
         );
         fram1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         fram1.setLayout(new BorderLayout(10,10));
@@ -24,11 +26,13 @@ public class GUI extends Filter {
             }
         });
         JPanel topFrPanel=new JPanel(new BorderLayout(10, 15));
-        JLabel titLabel=new JLabel("LES FORMES ET LES VUES");
+        JLabel titLabel=new JLabel("PIPE ET FILTER");
+        titLabel.setBorder(new EmptyBorder(10,0,10,10));
         titLabel.setFont(new Font("Calibri", Font.BOLD, 20));
         titLabel.setHorizontalAlignment(JLabel.CENTER);
         titLabel.setVerticalAlignment(JLabel.CENTER);
         JPanel fieldsPanel=new JPanel(new GridLayout(1, 4,10,10));
+        fieldsPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
         JLabel NBOJLabel=new JLabel("Nombre 1 :");
         JTextField NBOField=new JTextField(20);
         JLabel NBTJLabel=new JLabel("Nombre 2 :");
@@ -50,6 +54,7 @@ public class GUI extends Filter {
         topFrPanel.add(CalcPanel,BorderLayout.SOUTH);
 
         JPanel MidFrPanel=new JPanel(new BorderLayout(10,15));
+        MidFrPanel.setBorder(new EmptyBorder(20, 10, 10, 10));
         JPanel resPanel=new JPanel(new BorderLayout(10, 0));
         JLabel ResJLabel=new JLabel("RESULTATS");
         ResJLabel.setFont(new Font("Calibri", Font.BOLD, 20));
@@ -74,6 +79,7 @@ public class GUI extends Filter {
         MidFrPanel.add(qTPanel,BorderLayout.SOUTH);
 
         JPanel botPanel=new JPanel(new BorderLayout(10, 15));
+        botPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
         JLabel LogsJLabel=new JLabel("TRACE");
         LogsJLabel.setFont(new Font("Calibri", Font.BOLD, 20));
         LogsJLabel.setHorizontalAlignment(JLabel.CENTER);
@@ -81,8 +87,18 @@ public class GUI extends Filter {
         JTextArea LogsField=new JTextArea(5,20);
         LogsField.setEditable(false);
         JScrollPane logScrollPane=new JScrollPane(LogsField);
+        JButton quitTrace=new JButton("QUITTER TRACE");
         botPanel.add(LogsJLabel,BorderLayout.NORTH);
         botPanel.add(logScrollPane,BorderLayout.CENTER);
+        botPanel.add(quitTrace,BorderLayout.SOUTH);
+        quitTrace.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                LogsField.setText("");
+                fram1.remove(botPanel);
+                fram1.revalidate();
+                fram1.repaint();
+            }
+        });
 
 
         traceButton.addActionListener(new ActionListener() {
