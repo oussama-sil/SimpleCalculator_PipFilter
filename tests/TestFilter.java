@@ -1,5 +1,10 @@
+package tests;
 
 //? Simple class to test the implementation
+
+import filters.*;
+import pipes.*;
+
 public class TestFilter extends Filter{
 
     private int choice = 0;

@@ -1,8 +1,14 @@
+package filters.gui;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-
 import java.awt.*;
 import java.awt.event.*;
+
+import filters.*;
+import pipes.*;
+
+
 public class GUI extends Filter {
     
     public GUI(Pipe pipe_in,Pipe pipe_out){
@@ -12,7 +18,7 @@ public class GUI extends Filter {
     public void run(){
 
         JFrame fram1=new JFrame();
-        fram1.setSize(400, 320);
+        fram1.setSize(400, 330);
         Dimension screenDimension = Toolkit.getDefaultToolkit().getScreenSize(); 
         fram1.setLocation(
             (screenDimension.width-400)/2,
@@ -154,14 +160,6 @@ public class GUI extends Filter {
         fram1.add(MidFrPanel,BorderLayout.CENTER);
         
         fram1.setVisible(true);
-        //? What to send on the pipe_out (using sendData())
-        //* To Compute an operation:
-        //*     If (+ or - or *)  str= "op1 + op2"
-        //*     If (!)  str = "op !"
-        //* To get the list of logs  str = "" 
-        //! Attention to spaces in str 
-        //? What are the returned values  on the pipe_in (using getData())
-        //* Case operation  : "op1 + op2 = result" or "op ! = result"
-        //* Case list of logs : list of old operations seperated by ";" */
+
     }
 }

@@ -1,8 +1,7 @@
-import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.ArrayList;
+package filters.trace;
 
+import filters.Filter;
+import pipes.Pipe;
 
 public class Trace extends Filter{
 

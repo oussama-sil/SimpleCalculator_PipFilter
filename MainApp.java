@@ -1,51 +1,27 @@
-import java.util.Scanner;
+import filters.Filter;
+import filters.gui.GUI;
+import filters.interpreter.Interpreter;
+import filters.trace.Trace;
+import pipes.Pipe;
+import pipes.PipeQueue;
 
-//! Make sure to create logs.txt 
+//! Make sure to create logs.txt before the execution 
 
 public class MainApp{
     public static void main(String argv[]){
         
-        //* Main function
-        // Pipe pipe1 = new PipeQueue();
-        // Pipe pipe2 = new PipeQueue();
-        // Pipe pipe3 = new PipeQueue();
+        //? Pipes
+        Pipe pipe1 = new PipeQueue();  // GUI -> Interpreter
+        Pipe pipe2 = new PipeQueue();  // Interpreter -> Trace 
+        Pipe pipe3 = new PipeQueue();  // Trace -> GUI
         
-
-        // Filter gui = new GUI(pipe3,pipe1);
-        // gui.start();
-
-        // Filter interpreter = new Interpreter(pipe1, pipe2);
-        // interpreter.start();
-
-        // Filter trace = new Trace(pipe2, pipe3, "logs.txt");
-        // trace.start();
-
-
-
-        //* For testing 
-        //* producer  -> Interpreter -> Trace -> Consumer 
-        //* Check TestFilter 
-
-        Pipe pipe1 = new PipeQueue();
-        Pipe pipe2 = new PipeQueue();
-        Pipe pipe3 = new PipeQueue();
-        
-
-        //Filter prod = new TestFilter(null,pipe1,0);
-        //prod.start();
-
+        //? Filters 
         Filter interpreter = new Interpreter(pipe1, pipe2);
-        interpreter.start();
-
         Filter trace = new Trace(pipe2, pipe3, "logs.txt");
+        Filter gui= new GUI(pipe3,pipe1);    
+        interpreter.start();
         trace.start();
-         
-        Filter gui= new GUI(pipe3,pipe1);
         gui.start();
-        
-        //Filter cons1 = new TestFilter(pipe3,null,1);
-        //cons1.start();
-
-
+    
     }
 }

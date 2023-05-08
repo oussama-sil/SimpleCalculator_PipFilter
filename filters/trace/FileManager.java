@@ -1,3 +1,5 @@
+package filters.trace;
+
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -7,7 +9,6 @@ import java.nio.file.Paths;
 public class FileManager implements IOInterface{
     private final String fileName ;
 
-    //TODO : create file if doesn't exist
 
     public FileManager(String fileName){
         this.fileName = fileName;
@@ -29,9 +30,6 @@ public class FileManager implements IOInterface{
         String line = "";
         try {
             line = new String(Files.readAllBytes(Paths.get(fileName)));
-            // BufferedReader reader = new BufferedReader(new FileReader(fileName));
-            // line = reader.readLine();
-            // reader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -1,3 +1,5 @@
+package filters;
+import pipes.Pipe;
 
 public abstract class Filter  extends Thread {
 

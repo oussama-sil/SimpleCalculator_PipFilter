@@ -1,7 +1,10 @@
+package filters.interpreter;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
+import filters.Filter;
+import pipes.Pipe;
 
 public class Interpreter extends Filter{
     private static String alphabet[] = {"a","b","c","d","e","f","g"};
