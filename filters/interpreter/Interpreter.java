@@ -32,7 +32,7 @@ public class Interpreter extends Filter{
                     }else if (parts.length==3){ // other operators 
                         variables.put(alphabet[0], new Number(Integer.valueOf(parts[0])));
                         variables.put(alphabet[1], new Number(Integer.valueOf(parts[2])));
-    
+
                     }
                     //* Evaluating the expression
                     Evaluator exp = new Evaluator(postFixForm);

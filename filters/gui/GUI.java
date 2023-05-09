@@ -68,6 +68,12 @@ public class GUI extends Filter {
         ResJLabel.setVerticalAlignment(JLabel.CENTER);
         JTextField ResField=new JTextField(20);
         ResField.setEditable(false);
+        ResField.setText("....");
+        ResField.setFont(new Font("Calibri", Font.BOLD, 14));
+        ResField.setHorizontalAlignment(JTextField.CENTER);
+        ResField.setBorder(new EmptyBorder(5, 10, 10, 10));
+
+
         resPanel.add(ResJLabel,BorderLayout.NORTH);
         resPanel.add(ResField,BorderLayout.SOUTH);
         JPanel qTPanel=new JPanel(new FlowLayout());
